@@ -6,6 +6,7 @@ const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes');
 const cartRoutes = require('./routes/cartRoutes');
+const invoiceRoutes = require('./routes/invoiceRoutes');
 require('dotenv').config();
 
 // Create Express app
@@ -43,4 +44,5 @@ mongoose.connect('mongodb+srv://sriakash2009:admin@cluster0.hbcyh4c.mongodb.net/
 app.use('/api/user', authRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/cart', cartRoutes);
+app.use('/api/invoices', invoiceRoutes)
 
