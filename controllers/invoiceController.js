@@ -13,6 +13,10 @@ const saveInvoice = async (req, res) => {
             cartTotal
         });
         const savedInvoice = await invoice.save();
+
+        // Delete cart for this user
+        await Cart.deleteOne({ user: userId });
+
         res.status(201).json(savedInvoice);
     } catch (error) {
         console.error('Error saving invoice:', error);
