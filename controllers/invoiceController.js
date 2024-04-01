@@ -2,6 +2,21 @@ const Invoice = require('../models/InvoiceModel');
 const Cart = require('../models/CartModel');
 const mongoose = require('mongoose');
 
+const getInvoices = async (req, res) => {
+    try {
+        // Retrieve user ID from authenticated request
+        const {userId} = req.body;
+
+        // Fetch invoices from the database for the current user
+        const invoices = await Invoice.find({ userId: userId });
+
+        res.status(200).json(invoices);
+    } catch (error) {
+        console.error('Error fetching invoices:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+}
+
 const saveInvoice = async (req, res) => {
     try {
         const { userId, userName, address, paymentMethod, cartItems, cartTotal } = req.body;
@@ -28,4 +43,4 @@ const saveInvoice = async (req, res) => {
   
 
   
-  module.exports = {saveInvoice};
+  module.exports = {saveInvoice, getInvoices};
