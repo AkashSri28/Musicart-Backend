@@ -8,7 +8,7 @@ router.post('/add', addToCart);
 
 router.put('/updateQuantity', updateCartItemQuantity);
 
-router.post('/', authMiddleware, getUserCart);
+router.post('/', getUserCart);
 
 
 
