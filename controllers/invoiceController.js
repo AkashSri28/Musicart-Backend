@@ -55,7 +55,4 @@ const saveInvoice = async (req, res) => {
     }
   };
 
-  
-
-  
   module.exports = {saveInvoice, getInvoices, getInvoiceById};

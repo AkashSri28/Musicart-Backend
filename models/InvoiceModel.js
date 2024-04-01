@@ -35,6 +35,10 @@ const invoiceSchema = new mongoose.Schema({
     price: {
       type: String,
       required: true
+    },
+    imageUrl: {
+        type: String,
+        required: true
     }
   }],
   cartTotal: {
