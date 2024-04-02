@@ -20,9 +20,9 @@ const sortProducts = async (req, res) => {
 
     // Apply sorting based on the criteria
     if (criteria === 'priceLowest') {
-      products = await Product.find().sort({ price: 1 });
+      products = await Product.find().sort({ $expr: { $toDouble: "$price" } });
     } else if (criteria === 'priceHighest') {
-      products = await Product.find().sort({ price: -1 });
+      products = await Product.find().sort({ $expr: { $toDouble: "$price" } }).sort({ price: -1 });
     } else if (criteria === 'nameAZ') {
       products = await Product.find().sort({ productName: 1 });
     } else if (criteria === 'nameZA') {
