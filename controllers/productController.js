@@ -79,6 +79,7 @@ const filterProducts = async (req, res) => {
 
     // Add logic for price range filtering if needed
     if (priceRange) {
+      console.log(priceRange);
       // Split the priceRange string into minimum and maximum values
       const [minPrice, maxPrice] = priceRange.split(' - ').map(parseFloat);
 
