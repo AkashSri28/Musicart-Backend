@@ -76,7 +76,16 @@ const filterProducts = async (req, res) => {
     if (type) filter.productType = type;
     if (company) filter.company = company;
     if (color) filter.color = color;
+
     // Add logic for price range filtering if needed
+    if (priceRange) {
+      // Split the priceRange string into minimum and maximum values
+      const [minPrice, maxPrice] = priceRange.split(' - ').map(parseFloat);
+
+      console.log(minPrice)
+      // Construct a price filter based on the minimum and maximum values
+      filter.price = { $gte: minPrice, $lte: maxPrice };
+    }
 
     // Perform the database query with the constructed filter
     const filteredProducts = await Product.find(filter);
