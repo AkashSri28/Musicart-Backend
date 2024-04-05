@@ -81,7 +81,10 @@ const filterProducts = async (req, res) => {
     if (priceRange) {
       console.log(priceRange);
       // Split the priceRange string into minimum and maximum values
-      const [minPrice, maxPrice] = priceRange.split(' - ').map(parseFloat);
+      const [minPriceStr, maxPriceStr] = priceRange.split('-').map(str => str.trim().replace('₹', ''));
+      // Convert the string values to floating-point numbers
+      const minPrice = parseFloat(minPriceStr);
+      const maxPrice = parseFloat(maxPriceStr);
 
       console.log(minPrice)
       // Construct a price filter based on the minimum and maximum values
