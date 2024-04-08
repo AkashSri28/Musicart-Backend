@@ -88,7 +88,10 @@ const filterProducts = async (req, res) => {
 
       console.log(minPrice)
       // Construct a price filter based on the minimum and maximum values
-      filter.price = { $gte: minPrice, $lte: maxPrice };
+      filter.price = { 
+        $gte: { $toDecimal: minPriceStr },
+        $lte: { $toDecimal: maxPriceStr }
+      };
     }
 
     // Perform the database query with the constructed filter
