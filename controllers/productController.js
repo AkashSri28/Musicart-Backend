@@ -82,11 +82,8 @@ const filterProducts = async (req, res) => {
       console.log(priceRange);
       // Split the priceRange string into minimum and maximum values
       const [minPriceStr, maxPriceStr] = priceRange.split('-').map(str => str.trim().replace('₹', ''));
-      // Convert the string values to floating-point numbers
-      const minPrice = parseFloat(minPriceStr);
-      const maxPrice = parseFloat(maxPriceStr);
 
-      console.log(minPrice)
+      console.log(minPriceStr)
       // Construct a price filter based on the minimum and maximum values
       filter.price = { 
         $gte: { $toDecimal: minPriceStr },
