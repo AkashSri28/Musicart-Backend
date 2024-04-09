@@ -4,7 +4,6 @@ const Product = require('../models/ProductModel');
 const getAllProducts = async (req, res) => {
   try {
     const products = await Product.find();
-    console.log(products)
     res.status(200).json(products);
   } catch (error) {
     console.error('Error fetching products:', error);
@@ -43,7 +42,6 @@ const sortProducts = async (req, res) => {
 const getProductById = async (req, res)=>{
     try {
         const productId = req.params.id;
-        console.log(productId)
         const product = await Product.findById(productId);
         if (!product) {
           return res.status(404).json({ error: 'Product not found' });
@@ -79,11 +77,9 @@ const filterProducts = async (req, res) => {
 
     // Add logic for price range filtering if needed
     if (priceRange) {
-      console.log(priceRange);
       // Split the priceRange string into minimum and maximum values
       const [minPriceStr, maxPriceStr] = priceRange.split('-').map(str => str.trim().replace('₹', ''));
 
-      console.log(minPriceStr)
       // Construct a price filter based on the minimum and maximum values
       filter.price = { 
         $gte: { minPriceStr },
