@@ -34,7 +34,6 @@ const getInvoices = async (req, res) => {
 
 const saveInvoice = async (req, res) => {
     try {
-        console.log(req.body)
         const { userId, userName, address, paymentMethod, cartItems, cartTotal } = req.body;
         const invoice = new Invoice({
             userId,
